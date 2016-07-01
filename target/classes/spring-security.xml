@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security-4.1.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+
+	<http auto-config="true">
+		<intercept-url pattern="/user/**" access="ROLE_USER" />
+		<form-login login-page="/" default-target-url="/jsp/home" authentication-failure-url="/" />
+		<logout logout-url="/logout" logout-success-url="/" />
+		<csrf disabled="true" />
+	</http>
+
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+		<beans:property name="driverClassName" value="org.postgresql.Driver" />
+		<beans:property name="url"
+			value="jdbc:postgresql://localhost:5432/socialNetwork" />
+		<beans:property name="username" value="postgres" />
+		<beans:property name="password" value="stalker" />
+	</beans:bean>
+
+	<jdbc-user-service id="dbConnect" data-source-ref="dataSource"
+		users-by-username-query="select user_name, user_password, true from user where user_name = ?"
+		authorities-by-username-query="select user_name, 'ROLE_USER' from user where user_name=?" />
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="dbConnect" />
+	</authentication-manager>
+</beans:beans>
