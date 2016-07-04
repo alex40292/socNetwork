@@ -9,11 +9,13 @@
       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
 
-	<http auto-config="true">
-		<intercept-url pattern="/user/**" access="ROLE_USER" />
-		<form-login login-page="/" default-target-url="/jsp/home" authentication-failure-url="/" />
-		<logout logout-url="/logout" logout-success-url="/" />
-		<csrf disabled="true" />
+	<http auto-config="true" use-expressions="true">
+		<sec:intercept-url pattern="/page/**" access="hasRole('ROLE_USER')" />
+		<sec:intercept-url pattern="/login"
+			access="hasRole('IS_AUTHENTICATED_ANONYMOUSLY')" />
+
+		<sec:logout logout-success-url="/" />
+		<sec:csrf disabled="true" />
 	</http>
 
 	<beans:bean id="dataSource"
@@ -27,10 +29,15 @@
 	</beans:bean>
 
 	<jdbc-user-service id="dbConnect" data-source-ref="dataSource"
-		users-by-username-query="select user_name, user_password, true from user where user_name = ?"
-		authorities-by-username-query="select user_name, 'ROLE_USER' from user where user_name=?" />
+		users-by-username-query='select user_name, user_password, true from public."user" where user_name = ?'
+		authorities-by-username-query='select user_name, "ROLE_USER" from public."user" where user_name=?' />
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="dbConnect" />
+		<authentication-provider>
+			<sec:jdbc-user-service data-source-ref="dbConnect" />
+			<user-service>
+				<user name="admin" password="admin" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

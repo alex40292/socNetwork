@@ -19,26 +19,23 @@
 
 </head>
 <body>
-	<div style="position: absolute; width: 100%; height: 100%; background: rgba(212, 68, 173, 0.3); z-index: -1;"></div>
+	<div
+		style="position: absolute; width: 100%; height: 100%; background: rgba(212, 68, 173, 0.3); z-index: -1;"></div>
 	<div class="logo">
 		ВСЕ<span class="letter"><b>С</b></span>ВОИ.COM
 	</div>
-	
-		<a href="login">goToLoginPage</a>
-	
+
 	<div class="container" style="width: 240px;">
-		<c:url value="go" var="loginUrl" />
-		<form action="${loginUrl}" method="post">
+		<form name="f" action="<c:url value='j_spring_security_check'/>" method="POST">
 			<table style="margin: 20% auto;">
 				<tr>
 					<td><h2 style="font-family: Arial;">Please sign in:</h2></td>
 				</tr>
 				<tr>
-					<td><input type="text" class="form-control" name="j_username"></td>
+					<td><input type="text" name="j_username"></td>
 				</tr>
 				<tr>
-					<td><input type="password" class="form-control"
-						name="j_password"></td>
+					<td><input type="password" name="j_password"></td>
 				</tr>
 				<tr>
 					<td><button class="btn btn-lg btn-primary btn-block"

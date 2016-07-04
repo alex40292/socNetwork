@@ -1,7 +1,8 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 }
+
 body {
 	width: 100%;
 	height: 100px;
@@ -12,9 +13,12 @@ body {
 }
 
 .logo {
-	text-shadow: 2px 2px 2px silver, -2px -2px 2px silver, -2px 2px 2px silver, 2px -2px 2px silver, 4px 4px 5px #F0E68C, -4px -4px 5px #F0E68C,
-	-4px 4px 5px #F0E68C, 4px -4px 5px #F0E68C, 6px 6px 9px #F4A460, -6px -6px 9px #F4A460, -6px 6px 9px #F4A460, 6px -6px 9px #F4A460;
-	font-size : 80px;
+	text-shadow: 2px 2px 2px silver, -2px -2px 2px silver, -2px 2px 2px
+		silver, 2px -2px 2px silver, 4px 4px 5px #F0E68C, -4px -4px 5px
+		#F0E68C, -4px 4px 5px #F0E68C, 4px -4px 5px #F0E68C, 6px 6px 9px
+		#F4A460, -6px -6px 9px #F4A460, -6px 6px 9px #F4A460, 6px -6px 9px
+		#F4A460;
+	font-size: 80px;
 	font-family: klee;
 	padding: 70px 0 50px 20px;
 }
@@ -24,4 +28,19 @@ body {
 	font-size: 120px;
 }
 
+.regForm td {
+	padding: 5px;
+}
 
+.button td {
+	width: 100px;
+	padding: 10px;
+}
+
+.regForm {
+	width: 30%;
+	margin: 3% auto;
+	background: rgba(100, 100, 100, 0.6);
+	border-radius: 10px;
+	padding: 30px;
+}
