@@ -43,6 +43,10 @@ public class User extends AbstractPersistable<Long>
 	@Column(name = "country", nullable = false)
 	@NotNull
 	private String country;
+	
+	@Column(name = "role", nullable = false)
+	@NotNull
+	private String role;
 
 	public String getUserName()
 	{
@@ -115,7 +119,7 @@ public class User extends AbstractPersistable<Long>
 	}
 
 	public User(String userName, String userPassword, String firstName, String lastName, Integer age, String country,
-			String sex)
+			String sex, String role)
 	{
 		this.userName = userName;
 		this.userPassword = userPassword;
@@ -124,6 +128,7 @@ public class User extends AbstractPersistable<Long>
 		this.age = age;
 		this.country = country;
 		this.sex = sex;
+		this.role = role;
 	}
 
 	public User()

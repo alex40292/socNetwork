@@ -7,20 +7,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ВсеСвои.COM</title>
-
-<spring:url value="/resources/core/css/style.css" var="coreCss" />
-<spring:url value="/resources/core/css/style.css" var="coreJs" />
-<spring:url value="/resources/core/css/bootstrap.min.css"
-	var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${coreCss}" rel="stylesheet" />
-<script src="/resources/core/css/bootstrap.min.js"></script>
+	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
+    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet">
 </head>
 <body>
 	<div class="logo">
 		ВСЕ<span class="letter"><b>С</b></span>ВОИ.COM
 	</div>
-	<h1>HELLO WORLD!!</h1>
-	<a href="<c:url value="/logout" />"> Logout</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">dasdas</div>
+			<div class="col-md-8">fasfa</div>
+		</div>
+	</div>
+	<p class="text-center"><a class="btn btn-danger" href="<c:url value="/logout" />">Logout</a></p>
+	<p class="text-center"><a class="btn btn-danger" href="create">create new group</a></p>
 </body>
 </html>

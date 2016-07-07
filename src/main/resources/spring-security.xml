@@ -28,16 +28,11 @@
 		<beans:property name="password" value="stalker" />
 	</beans:bean>
 
-	<jdbc-user-service id="dbConnect" data-source-ref="dataSource"
-		users-by-username-query='select user_name, user_password, true from public."user" where user_name = ?'
-		authorities-by-username-query='select user_name, "ROLE_USER" from public."user" where user_name=?' />
-
 	<authentication-manager>
 		<authentication-provider>
-			<sec:jdbc-user-service data-source-ref="dbConnect" />
-			<user-service>
-				<user name="admin" password="admin" authorities="ROLE_USER" />
-			</user-service>
+			<jdbc-user-service id="dbConnect" data-source-ref="dataSource"
+				users-by-username-query='select user_name AS username, user_password AS password, true from public."user" where user_name = ?'
+				authorities-by-username-query='select user_name AS username, role AS authorities from public."user" where user_name=?' />
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

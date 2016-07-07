@@ -8,16 +8,8 @@
 <html lang="en">
 <head>
 <title>ВсеСвои.COM</title>
-
-<spring:url value="/resources/core/css/style.css" var="coreCss" />
-<spring:url value="/resources/core/css/style.css" var="coreJs" />
-<spring:url value="/resources/core/css/bootstrap.min.css"
-	var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${coreCss}" rel="stylesheet" />
-<script src="/resources/core/css/bootstrap.min.js"></script>
-
-</head>
+	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
+    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></head>
 <body>
 	<div
 		style="position: absolute; width: 100%; height: 100%; background: rgba(212, 68, 173, 0.3); z-index: -1;"></div>

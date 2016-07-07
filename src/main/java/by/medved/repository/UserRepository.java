@@ -9,4 +9,5 @@ import by.medved.model.User;
 public interface UserRepository extends JpaRepository<User, Long>
 {
 	User findByUserName(String username);
+	//List<User> findAllUsers();
 }

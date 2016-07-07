@@ -11,25 +11,11 @@
     <link href="<c:url value='/static/css/app.css' />" rel="stylesheet">
 </head>
 <body>
-	<div class="logo">
-		ВСЕ<span class="letter"><b>С</b></span>ВОИ.COM
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4" style="background: red;">aaaa</div>
-			<div class="col-md-8" style="background: green;">bbbb</div>
-		</div>
-	</div>
+	<h1>Create new group</h1>
+	<form action="group_create" method="post">
+		Название группы: <input type="text" name="groupName">
+		<input type="submit">
 	
-	<table class="button table">
-		<tr>
-			<td>
-				<a href="page" class="btn btn-lg btn-primary btn-block">Авторизация</a>	
-			</td>
-			<td>
-				<a href="registration" class="btn btn-lg btn-primary btn-block">Регистрация</a>
-			</td>
-		</tr>
-	</table>
+	</form>
 </body>
 </html>

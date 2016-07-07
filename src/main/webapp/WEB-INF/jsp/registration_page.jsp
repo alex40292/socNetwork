@@ -5,8 +5,8 @@
 <html lang="en">
 <head>
 <title>ВсеСвои.COM</title>
-	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
-    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet">
+<spring:url value="/resources/bootstrap.min.css" var="bootstrap" />
+<link href="${bootstrap}" rel="stylesheet">
 </head>
 <body>
 	<form method="GET" action="registration_page">

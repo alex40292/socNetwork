@@ -6,12 +6,8 @@
 <html>
 <head>
 <title>ВсеСвои.COM</title>
-
-<spring:url value="/resources/core/css/style.css" var="coreCss" />
-<spring:url value="/resources/core/css/bootstrap.min.css"
-	var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${coreCss}" rel="stylesheet" />
+	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
+    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet">
 </head>
 <body>
 	<div class="logo">

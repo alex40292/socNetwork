@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import by.medved.model.Group;
 import by.medved.model.User;
+import by.medved.repository.GroupRepository;
 import by.medved.repository.UserRepository;
 import by.medved.service.UserService;
 
@@ -19,6 +21,9 @@ public class UserController
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	GroupRepository groupRepository;
 
 	@RequestMapping(value = "/registration_page", method = RequestMethod.POST)
 	public String createUser(@RequestParam("login") String login, @RequestParam("pass") String password,
@@ -28,7 +33,7 @@ public class UserController
 	{
 		if (userRepository.findByUserName(login) == null)
 		{
-			User user = new User(login, password, firstName, lastName, age, country, sex);
+			User user = new User(login, password, firstName, lastName, age, country, sex, "ROLE_USER");
 			userService.userCreator(user);
 		}
 		return "redirect:/";
@@ -38,6 +43,22 @@ public class UserController
 	public String registration()
 	{
 		return "registration";
+	}
+	
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String pageForCreateGroup()
+	{
+		return "home2";
+	}
+	
+	@RequestMapping(value = "/group_create", method = RequestMethod.POST)
+	public String CreateNewGroup(@RequestParam("groupName") String groupName, ModelMap modelMap)
+	{
+		if (groupRepository.findByGroupName(groupName) == null)
+		{
+			groupRepository.save(new Group(groupName));
+		}
+		return "redirect:/";
 	}
 
 }
